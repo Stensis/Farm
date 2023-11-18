@@ -1,14 +1,39 @@
-import { useState } from 'react'
-import './App.css'
+// src/App.jsx
+import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router";
+// import LoginPage from "./pages/LoginPage";
+import Home from "./pages/Home";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
+// import authService from "./services/authService";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  // const [authenticated, setAuthenticated] = useState(false);
+  // const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   const checkAuthStatus = async () => {
+  //     try {
+  //       const result = await authService.checkAuthStatus();
+  //       setAuthenticated(true);
+  //     } catch (error) {
+  //       setAuthenticated(false);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   checkAuthStatus();
+  // }, []);
 
   return (
-   <div>
-    farmVille
-   </div>
-  )
-}
+    <Routes>
+      <Route element={<Home />} path="/" />
+      <Route element={<LoginPage />} path="/login" />
+      <Route element={<SignUpPage />} path="/signup" />
 
-export default App
+    </Routes>
+  );
+};
+
+export default App;
