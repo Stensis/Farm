@@ -9,7 +9,9 @@ const Signup = () => {
   const [tel, setTel] = useState("");
   const [location, setLocation] = useState("");
 
-  const handleSignup = async () => {
+  const handleSignup = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+
     try {
       const signupData = {
         user: {
@@ -29,13 +31,14 @@ const Signup = () => {
       // Handle the signup result as needed
     } catch (error) {
       console.error("Signup failed:", error);
+      // Handle the signup error (e.g., display an error message to the user)
     }
   };
 
   return (
     <div>
       <h1>Signup</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={handleSignup}>
         <label>Full Name:</label>
         <input
           type="text"
@@ -83,7 +86,7 @@ const Signup = () => {
           <option value="farmer">Farmer</option>
         </select>
 
-        <button onClick={handleSignup}>Signup</button>
+        <button type="submit">Signup</button>
       </form>
     </div>
   );
