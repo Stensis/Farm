@@ -1,4 +1,3 @@
-// src/auth/authService.js
 const decodeToken = (token) => {
     try {
       const decoded = JSON.parse(atob(token.split('.')[1]));
@@ -25,13 +24,10 @@ const decodeToken = (token) => {
       // Check if the token is expired
       return expirationTime > currentTime;
     }
-  
     // Token is invalid or does not have an expiration time
     return false;
   };
-  
-  // Your existing authService code...
-  
+    
   export default {
     // Export your existing authService functions...
     decodeToken,

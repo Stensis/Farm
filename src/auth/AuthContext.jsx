@@ -42,24 +42,22 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuthStatus = async () => {
     try {
-      const token = authService.getToken(); // Use authService to get the token
-      console.log("Token:", token);
-
+      const token = authService.getToken();
+  
       if (!token) {
         console.error("No token found. User is not authenticated.");
         return;
       }
-
-      if (authService.checkTokenExpiry(token)) {
-        // Token is expired, handle accordingly (e.g., refresh token)
-      }
-
+  
+      // Add the token to the request headers
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  
       // Rest of your code...
     } catch (error) {
       console.error("Error checking auth status:", error);
     }
   };
-
+  
   // On component mount, check the authentication status
   useEffect(() => {
     checkAuthStatus();
