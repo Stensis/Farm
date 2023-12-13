@@ -1,7 +1,7 @@
 export default function Home(){
     return(
         <div>
-            Farm ville home
+            Farm ville homepage
         </div>
     )
 }
